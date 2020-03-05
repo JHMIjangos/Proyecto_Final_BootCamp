@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="shortcut icon" href="#">
+        <title>Project 3</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+        
+    <body>   
+      
+      <!--Nav bar -->
+      <nav class="navbar nav-fill navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/"">Calidad del Aire</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Parámetros
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{url_for('graph', param = 'CO')}}">CO</a>
+                <a class="dropdown-item" href="{{url_for('graph', param = 'NO2')}}">NO2</a>
+                <a class="dropdown-item" href="{{url_for('graph', param = 'O3')}}">O3</a>
+                <a class="dropdown-item" href="{{url_for('graph', param = 'PM2')}}">PM2</a>
+                <a class="dropdown-item" href="{{url_for('graph', param = 'PM10')}}">PM10</a>
+                <a class="dropdown-item" href="{{url_for('graph', param = 'SO2')}}">SO2</a>
+                <a class="dropdown-item" href="#">Temp</a>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#aboutProj">Acerca del Proyecto<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#map">Mapa<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+        <!--Title-->
+        <div id = "title" class="container-xl">
+          <h1 id = "titleBG" class="text-center">Datos de Calidad del Aire</h1>
+        </div>
+        <div>{{r}}</div>
+
+        <!--About project-->
+        <div class="jumbotron">
+          <h2 id = "aboutProj" class="text-left">
+            En este proyecto analizamos registros de calidad del aire en diversos estados
+            del país. Los datos provienen del Sistema Nacional de Información de Calidad del Aire (SINAICA).
+          </h2>
+          <br>
+          <hr>
+          <br>
+          <h2 id = "aboutProj" class="text-left">
+            Parámetros:
+          </h2>
+          <ul id = "parametros" class="list-group-flush">
+            <li class="list-group-item">Dióxido de Azufre (SO2): En grandes cantidades afecta sobre todo a las mucosidades y los pulmones, provocando ataques de tos. </li>
+            <li class="list-group-item">Ozono (O3): Produce envejecimiento prematuro y deterioro de los pulmones en altas concentraciones.</li>
+            <li class="list-group-item">Monóxido de Carbono (CO): Puede provocar una disminución de la capacidad de transporte de oxígeno de la sangre, afectando la oxigenación de órganos y tejidos.</li>
+            <li class="list-group-item">Dióxido de Nitrógeno (NO2): Niveles elevados de dióxido de nitrógeno pueden irritar los pulmones y disminuir la función pulmonar, así como disminuir la resistencia a infecciones respiratorias.</li>
+            <li class="list-group-item">Partículas menores a 2.5 micrómetros (PM2): Reducción de la función pulmonar: frecuencia de enfermedades           respiratorias</li>
+            <li class="list-group-item">Partículas menores a 10 micrómetros (PM10): Reducción de la función pulmonar: frecuencia de enfermedades respiratorias</li>
+          </ul>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="jumbotron">
+          <div id = "map" class="container">
+            <h2 class="display-4">Estaciones: </h2>
+            <iframe class="map", src="/get_map_home" width="1100" height="600"></iframe>
+          </div>
+        </div>
+
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="/static/js/logic.js"></script>
+    </body>
+
+    <!---------------------IMPORTS-------------------------->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
